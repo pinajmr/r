@@ -3,3 +3,5 @@
 #Preprocesamiento
 str(orangeec)
 
+#Resumen
+summary(orangeec)
