@@ -1,0 +1,32 @@
+---
+title: "Economia Naranja"
+author: "Jose Pina"
+date: "9/18/2020"
+output: html_document
+---
+
+```{r} 
+orangeec <- read.csv("/Users/rey_g/Proyecto_R/DataFrame/orangeec.csv")
+data(orangeec)
+summary(orangeec)
+```
+Parece que hay correlacion entre aporte de economia naranja al PIB y la tasa de desempleo.
+```{r}
+pairs(orangeec[,6:10])
+```
+```{r}
+library(ggplot2)
+```
+```{r}
+ggplot() +geom_histogram(data = orangeec,
+                         aes(x=Internet.penetration...population),fill ="pink", color ="black",
+                         binwidth = 5)+
+  scale_x_continuous(breaks = seq(40,max(100),5))+
+  labs(x="Penetracion de Internet", y="Cantidad de Paises",
+       title = "Penetracion de internet en los Paises de LATAM")+
+  theme(legend.position = "none")+
+  theme(panel.background = element_blank(),panel.grid.major =  element_blank(),
+        panel.grid.minor = element_blank())
+```
+
+
