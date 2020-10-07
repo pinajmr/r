@@ -7,6 +7,6 @@ This repository is composed of 2 Dataframe about Orange Economy and Mtcars .
 - applying statist functions  with the libraries in R
 - Display using Markdown
 
-_Note: Both datasets were applied seperately _ 
+_Note: Both datasets were applied seperately_ 
 
 > pinajmr
