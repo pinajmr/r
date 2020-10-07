@@ -1,0 +1,64 @@
+---
+title: "mtcars"
+author: "Jose Piña"
+date: "10/7/2020"
+output: html_document
+---
+
+```{r}
+orangeec <- read.csv("/Users/rey_g/Proyecto_R/DataFrame/mtcars.csv")
+data(mtcars)
+
+```
+
+Summary
+
+```{r}
+###Transformation of variables
+mtcars$vs = as.logical(mtcars$vs)
+mtcars$am = as.logical(mtcars$am)
+mtcars.new <- transform(mtcars, wt = wt*1000/2.2)
+mtcars[mtcars$qsec > 20,]
+summary(mtcars)
+
+```
+Scatter plot mgp vs hp
+```{r}
+
+plot(mtcars$mpg ~ mtcars$cyl,
+     xlab ="Cylinders", ylab ="Miles for gallon",
+     main ="Relationship between cylinders and miles for gallon")
+```
+
+Histogram 
+
+```{r}
+library(ggplot2)
+ggplot(mtcars, aes(x=hp))+
+  geom_histogram(binwidth = 30)+
+  labs(x="Hoursepower", y="Number of cars",
+       title = "Hourspower in select cars")+
+  theme(legend.position = "none")+
+  theme(panel.background = element_blank(),panel.grid.major =  element_blank(),
+        panel.grid.minor = element_blank())
+```
+
+Boxplot
+
+```{r}
+mtcars$am <- factor(mtcars$am, levels=c(TRUE,FALSE),
+                    labels =c("Manual","Automatic"))
+ggplot(mtcars, aes(x=am, y=mpg, fill=am))+
+    geom_boxplot()+
+    labs(x="Type car-box", y="Miles of gallon",
+         title ="Miles for gallon according types of car-box")+
+  theme(legend.position = "none")+
+  theme(panel.background = element_blank(),panel.grid.major =  element_blank(),
+        panel.grid.minor = element_blank())
+```
+
+Correlation with Pair
+
+```{r}
+pairs(mtcars[,2:6])
+```
